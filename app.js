@@ -16,13 +16,13 @@ cloudinary.config({
 app.use(cors({
   // origin: CLIENT_ORIGIN
   origin: true,
-  methods: ["POST"],
+  methods: ["GET", "POST"],
   credentials: true,
   maxAge: 3600
 }))
 
 app.use(formData.parse())
-
+app.get('/', (req, res) => res.send(JSON.stringify({ Hello: 'World' })))
 app.get('/wake-up', (req, res) => res.send('👌'))
 app.get('/hello', (req, res) => res.send('hello'))
 
