@@ -16,12 +16,15 @@ cloudinary.config({
 app.use(cors({
   // origin: CLIENT_ORIGIN
   origin: true,
+  methods: ["POST"],
   credentials: true,
+  maxAge: 3600
 }))
 
 app.use(formData.parse())
 
 app.get('/wake-up', (req, res) => res.send('👌'))
+app.get('/hello', (req, res) => res.send('hello'))
 
 app.post('/image-upload', (req, res) => {
   const values = Object.values(req.files)
