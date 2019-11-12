@@ -1,3 +1,3 @@
 exports.CLIENT_ORIGIN = process.env.NODE_ENV === 'production'
-  ? 'https://react-image-upload.surge.sh'
+  ? 'https://safe-peak-17822.herokuapp.com'
   : 'http://localhost:3000'
