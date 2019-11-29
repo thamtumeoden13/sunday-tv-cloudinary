@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express')
-const cloudinary = require('cloudinary')
+const cloudinary = require('cloudinary').v2
 const formData = require('express-form-data')
 const cors = require('cors')
 const { CLIENT_ORIGIN } = require('./config')
@@ -26,7 +26,7 @@ app.get('/', (req, res) => res.send(JSON.stringify({ Hello: 'World' })))
 app.get('/wake-up', (req, res) => res.send('👌'))
 app.get('/hello', (req, res) => res.send('hello'))
 
-app.post('/image-upload', (req, res) => {
+app.get('/image-upload', (req, res) => {
   const values = Object.values(req.files)
   console.log("values", values)
   const promises = values.map(image => cloudinary.uploader.upload(image.path))
