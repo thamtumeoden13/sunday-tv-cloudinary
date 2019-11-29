@@ -22,11 +22,14 @@ app.use(cors({
 }))
 
 app.use(formData.parse())
+
 app.get('/', (req, res) => res.send(JSON.stringify({ Hello: 'World' })))
+
 app.get('/wake-up', (req, res) => res.send('👌'))
+
 app.get('/hello', (req, res) => res.send('hello'))
 
-app.post('/image-upload', (req, res) => {
+app.get('/image-upload', (req, res) => {
   const values = Object.values(req.files)
   console.log("values", values)
   const promises = values.map(image => cloudinary.uploader.upload(image.path))
